@@ -1,0 +1,261 @@
+
+simon-classic.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b4p
+  rotate: false
+  xy: 1, 534
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+sub-title-font
+  rotate: false
+  xy: 1, 1752
+  size: 1779, 26
+  orig: 1779, 26
+  offset: 0, 0
+  index: -1
+
+simon-classic2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b4h
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic3.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b4
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic4.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b3p
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic5.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b3h
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic6.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b3
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic7.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b2p
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic8.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b2h
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic9.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b2
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic10.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b1p
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic11.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b1h
+  rotate: false
+  xy: 1, 1
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+
+simon-classic12.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+b1
+  rotate: false
+  xy: 1, 324
+  size: 1216, 1216
+  orig: 1216, 1216
+  offset: 0, 0
+  index: -1
+blue-dark
+  rotate: false
+  xy: 1, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+blue-light
+  rotate: false
+  xy: 256, 290
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+blue-normal
+  rotate: false
+  xy: 1219, 1410
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+navy-dark
+  rotate: false
+  xy: 1315, 1508
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+navy-light
+  rotate: false
+  xy: 1, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+navy-normal
+  rotate: false
+  xy: 35, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+orange-dark
+  rotate: false
+  xy: 256, 256
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+orange-light
+  rotate: false
+  xy: 290, 290
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+orange-normal
+  rotate: false
+  xy: 1219, 1376
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+pink-dark
+  rotate: false
+  xy: 1253, 1410
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+pink-light
+  rotate: false
+  xy: 1315, 1474
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+pink-normal
+  rotate: false
+  xy: 1349, 1508
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+font-export
+  rotate: false
+  xy: 1219, 1444
+  size: 94, 96
+  orig: 94, 96
+  offset: 0, 0
+  index: -1
+title-font-export
+  rotate: false
+  xy: 1, 69
+  size: 253, 253
+  orig: 253, 253
+  offset: 0, 0
+  index: -1

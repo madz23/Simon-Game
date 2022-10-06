@@ -1,0 +1,129 @@
+{
+BitmapFont: {
+	font-export: {
+		file: font-export.fnt
+	}
+	sub-title-font-export: {
+		file: sub-title-font-export.fnt
+	}
+	title-font-export: {
+		file: title-font-export.fnt
+	}
+}
+Color: {
+	black: {
+		r: 0.016666615
+		g: 0.015499952
+		b: 0.015499952
+		a: 1
+	}
+	boring-blue: {
+		r: 0.32941177
+		g: 0.47843137
+		b: 0.61960787
+		a: 1
+	}
+	cream: {
+		r: 0.96666664
+		g: 0.9408889
+		b: 0.9408889
+		a: 1
+	}
+}
+ButtonStyle: {
+	default: {
+		up: orange-normal
+		down: orange-dark
+		over: orange-light
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+	}
+	button-1: {
+		up: b1
+		down: b1p
+		over: b1h
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+	}
+	button-2: {
+		up: b2
+		down: b2p
+		over: b2h
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+	}
+	button-3: {
+		up: b3
+		down: b3p
+		over: b3h
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+	}
+	button-4: {
+		up: b4
+		down: b4p
+		over: b4h
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+	}
+	button-4-pressed: {
+		up: b4p
+		down: b4p
+		over: b4p
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+	}
+	button-1-pressed: {
+		up: b1p
+		down: b1p
+		over: b1p
+	}
+	button-2-pressed: {
+		up: b2p
+		down: b2p
+		over: b2p
+	}
+	button-3-pressed: {
+		up: b3p
+		down: b3p
+		over: b3p
+	}
+}
+LabelStyle: {
+	default: {
+		font: font-export
+		fontColor: cream
+	}
+	title-black: {
+		font: title-font-export
+		fontColor: black
+	}
+	title-white: {
+		font: title-font-export
+		fontColor: cream
+	}
+	sub-title-black: {
+		font: sub-title-font-export
+		fontColor: black
+	}
+	sub-title-white: {
+		font: sub-title-font-export
+		fontColor: cream
+	}
+	default-white: {
+		font: font-export
+		fontColor: cream
+	}
+}
+TextTooltipStyle: {
+	default: {
+		label: default
+	}
+}
+WindowStyle: {
+	default: {
+		titleFont: title-font-export
+		titleFontColor: cream
+	}
+}
+}
