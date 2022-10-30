@@ -1,0 +1,75 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	font-export: {
+		file: font-export.fnt
+	}
+	font-subtitle-export: {
+		file: font-subtitle-export.fnt
+	}
+	font-title-export: {
+		file: font-title-export.fnt
+	}
+}
+com.badlogic.gdx.graphics.Color: {
+	black: {
+		r: 0.015686275
+		g: 0.003921569
+		b: 0.003921569
+		a: 1
+	}
+	white: {
+		r: 1
+		g: 1
+		b: 1
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+	button-1: {
+		up: b1-gray
+		down: b1p-gray
+	}
+	button-2: {
+		up: b2-gray
+		down: b2p-gray
+	}
+	button-3: {
+		up: b3-gray
+		down: b3p-gray
+	}
+	button-4: {
+		up: b4-gray
+		down: b4p-gray
+	}
+	button-1-pressed: {
+		up: b1p-gray
+	}
+	button-2-pressed: {
+		up: b2p-gray
+	}
+	button-3-pressed: {
+		up: b3p-gray
+	}
+	button-4-pressed: {
+		up: b4p-gray
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	title-white: {
+		font: font-title-export
+		fontColor: white
+	}
+	sub-title-white: {
+		font: font-subtitle-export
+		fontColor: white
+	}
+	title-black: {
+		font: font-title-export
+		fontColor: black
+	}
+	sub-title-black: {
+		font: font-subtitle-export
+		fontColor: black
+	}
+}
+}

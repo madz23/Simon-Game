@@ -17,7 +17,7 @@ public class Streak extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 
-		this.setScreen(new GameScreen(this, "skins/simon-classic/simon-classic.json", "sounds/simon-classic/"));
+		this.setScreen(new SelfID(this));
 	}
 
 	@Override

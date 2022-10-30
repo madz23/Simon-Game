@@ -5,15 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.Timer;
 
 
@@ -29,10 +26,7 @@ public class GameScreen implements Screen {
     private Label subTitle;
     private Table table;
 
-    private StreakButton button1;
-    private StreakButton button2;
-    private StreakButton button3;
-    private StreakButton button4;
+    private StreakButton[] buttons;
 
     private Label scoreLabel;
     private Label turnLabel;
@@ -44,7 +38,7 @@ public class GameScreen implements Screen {
 
     private float waitTime = .5f;
 
-    private final int buttonDim = 150;
+    private final int buttonDim = 200;
 
     private Stage stage;
 
@@ -54,15 +48,15 @@ public class GameScreen implements Screen {
 
     private int currentIndex = 0;
 
-    public GameScreen(Game game, String skinPath, String soundPath) {
+    public GameScreen(Game game, Config config) {
         this.game = game;
 
-        this.soundPath = soundPath;
+        this.soundPath = config.getSoundPath();
 
         successSound = Gdx.audio.newSound(Gdx.files.internal(soundPath + "success.wav"));
 
         // set up basic skin and stage
-        skin = new Skin((Gdx.files.internal(skinPath)));
+        skin = new Skin((Gdx.files.internal(config.getPath())));
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
 
@@ -86,45 +80,23 @@ public class GameScreen implements Screen {
 
         // Buttons-- note that they are a custom class and not the normal button. SimonButton
         // contains the actual button, this just allows for less duplicate code.
-        button1 = new StreakButton(skin, 1, soundPath);
-        button2 = new StreakButton(skin, 2, soundPath);
-        button3 = new StreakButton(skin, 3, soundPath);
-        button4 = new StreakButton(skin, 4, soundPath);
+        buttons = new StreakButton[config.getNumButtons()];
 
-        button1.getButton().addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                checkInput(1);
-            }
-        });
+        for (int i = 0; i < config.getNumButtons(); i++) {
+            buttons[i] = new StreakButton(skin, i + 1, soundPath);
 
-        button2.getButton().addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                checkInput(2);
-            }
-        });
+            final int finalI = i;
+            buttons[i].getButton().addListener(new ClickListener() {
+                public void clicked(InputEvent event, float x, float y) {
+                    if (playerTurn) {
+                        checkInput(finalI + 1);
+                    }
+                }
+            });
+            buttonTable.add(buttons[i].getButtonStack()).width(buttonDim).height(buttonDim);
 
-        button3.getButton().addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                checkInput(3);
-            }
-        });
-
-        button4.getButton().addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                checkInput(4);
-            }
-        });
-
-        // separate button table so they are in a square and the other widgets don't offset them
-        buttonTable.add(button1.getButtonStack()).width(buttonDim).height(buttonDim);
-        buttonTable.add(button2.getButtonStack()).width(buttonDim).height(buttonDim);
-        buttonTable.row();
-        buttonTable.add(button4.getButtonStack()).width(buttonDim).height(buttonDim);
-        buttonTable.add(button3.getButtonStack()).width(buttonDim).height(buttonDim);
+            if (i % 2 == 1) {buttonTable.row(); }
+        }
 
         table.row();
         table.add(buttonTable).width(buttonDim);
@@ -249,21 +221,7 @@ public class GameScreen implements Screen {
      * @param note: int, function to help play the sequence
      */
     private void playFromInt(int note) {
-        switch (note) {
-            case 1:
-                button1.fakePress();
-                break;
-            case 2:
-                button2.fakePress();
-                break;
-            case 3:
-                button3.fakePress();
-                break;
-            case 4:
-                button4.fakePress();
-                break;
-        }
-
+        buttons[note - 1].fakePress();
     }
 }
 
