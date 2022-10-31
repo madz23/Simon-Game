@@ -20,6 +20,7 @@ import com.badlogic.gdx.utils.Timer;
 
 public class GameScreen implements Screen {
     private Game game;
+    private Config config;
 
     private final Skin skin;
     private Label title;
@@ -46,10 +47,15 @@ public class GameScreen implements Screen {
 
     Sound successSound;
 
+    private int tries;
     private int currentIndex = 0;
+    private int bestScore;
 
-    public GameScreen(Game game, Config config) {
+    public GameScreen(Game game, Config config, int tries, int bestScore) {
         this.game = game;
+        this.tries = tries;
+        this.bestScore = bestScore;
+        this.config = config;
 
         this.soundPath = config.getSoundPath();
 
@@ -133,7 +139,7 @@ public class GameScreen implements Screen {
                 sequence.resetAndAdd();
                 playSequence(sequence);
                 playerTurn = true;
-                System.out.println(sequence);
+//                System.out.println(sequence);
             }
 
         }
@@ -172,7 +178,7 @@ public class GameScreen implements Screen {
             scoreLabel.setText("Score: " + score);
             successSound.play();
 
-            System.out.println(score);
+//            System.out.println(score);
             playerTurn = false;
         }
     }
@@ -182,7 +188,7 @@ public class GameScreen implements Screen {
 //            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
             playFromInt(input);
-            System.out.println("Correct input of " + input);
+//            System.out.println("Correct input of " + input);
             currentIndex++;
             checkEndOfSequence();
         }
@@ -192,11 +198,13 @@ public class GameScreen implements Screen {
     }
 
     private void gameOver() {
+        tries += 1;
+        if (score > bestScore) { bestScore = score; }
         success = false;
         Sound fail = Gdx.audio.newSound(Gdx.files.internal(soundPath + "failure.wav"));
         fail.play();
-        System.out.println("GAME OVER");
-        game.setScreen(new GameOverScreen(game, skin));
+//        System.out.println("GAME OVER");
+        game.setScreen(new GameOverScreen(game, skin, this));
     }
     /**
      * @param sequence: should contain random sequence of 1, 2, 3, 4
@@ -207,7 +215,7 @@ public class GameScreen implements Screen {
                            @Override
                            public void run() {
                                playFromInt(sequence.next());
-                               System.out.println("playing");
+//                               System.out.println("playing");
                            }
                        }
                 , waitTime + 1      //    (delay)
@@ -223,6 +231,10 @@ public class GameScreen implements Screen {
     private void playFromInt(int note) {
         buttons[note - 1].fakePress();
     }
+
+    public int getTries() { return tries; }
+    public int getBestScore() { return bestScore; }
+    public Config getConfig() { return config; }
 }
 
 

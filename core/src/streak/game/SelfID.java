@@ -36,10 +36,9 @@ public class SelfID implements Screen {
     private Label memoryLabel;
 
     public final Config[] options = {
-            // new Config("skins/simon-classic/simon-classic.json", "sounds/simon-classic/", 4),
             new Config("skins/classic/classic.json", "sounds/simon-classic/", 4, true),
-            new Config("skins/grayscale/grayscale.json", "sounds/simon-classic/", 4, true),
-            new Config("skins/animals/animals.json", "sounds/simon-classic/", 4, true)
+            new Config("skins/grayscale/grayscale.json", "sounds/gray/", 4, true),
+            new Config("skins/animals/animals.json", "sounds/animals/", 4, true)
     };
 
     public final Skin tempSkin = new Skin(Gdx.files.internal("skins/default/uiskin.json"));
@@ -52,7 +51,7 @@ public class SelfID implements Screen {
         Table table = new Table();
         table.setFillParent(true);
 
-        table.setDebug(true);
+//        table.setDebug(true);
 
         submitButton = new TextButton("Submit", tempSkin);
         submitButton.addListener(new ClickListener() {
@@ -62,8 +61,9 @@ public class SelfID implements Screen {
             }
         });
 
-        helloLabel = new Label("Welcome to this game for my CS4499 project. Please fill\n" +
-                "out some information before you begin", tempSkin) ;
+        helloLabel = new Label("Welcome to this Simon Says, a Game to Test Your Memory. You are\n" +
+                "participating in an unofficial research study. Please fill out some information \n" +
+                "before you begin.", tempSkin) ;
 
         ageBox = new SelectBox<String>(tempSkin);
         ageBox.setItems("Under 18", "18-21", "22-25", "26-30", "31-35", "36-40", "41-50", "Over 50");
@@ -79,41 +79,42 @@ public class SelfID implements Screen {
         gameActivityBox = new SelectBox<Integer>(tempSkin);
         gameActivityBox.setItems(0, 1, 2, 3, 4, 5, 6, 7);
 
-        gameActivityLabel = new Label("On average, how many days do you \nplay video games in a week?", tempSkin);
+        gameActivityLabel = new Label("On average, how many days \n" +
+                "do you play video games in a week?", tempSkin);
 
         memoryBox = new SelectBox<Integer>(tempSkin);
-        memoryBox.setItems(0, 1, 2, 3, 4, 5);
+        memoryBox.setItems(0, 1, 2, 3, 4, 5, 6, 7);
 
-        memoryLabel = new Label("On a scale from 0 to 5 (0 being none, 5 being all the time\n" +
-                "how often do you play memory games?", tempSkin);
+        memoryLabel = new Label("On average, how many days " +
+                "a week\n do you try to improve your memory \nthrough memory games?", tempSkin);
 
 
         Table headerTable = new Table(tempSkin);
-        headerTable.add(helloLabel);
+        headerTable.add(helloLabel).center();
 
         Table formTable = new Table(tempSkin);
-        formTable.setDebug(true);
+//        formTable.setDebug(true);
 
         table.row();
 
-        formTable.add(ageLabel);
-        formTable.add(ageBox);
+        formTable.add(ageLabel).left();
+        formTable.add(ageBox).left();
         formTable.row();
 
-        formTable.add(educationLabel);
-        formTable.add(educationBox);
+        formTable.add(educationLabel).left();
+        formTable.add(educationBox).left();
         formTable.row();
 
-        formTable.add(gameActivityLabel);
-        formTable.add(gameActivityBox);
+        formTable.add(gameActivityLabel).left();
+        formTable.add(gameActivityBox).left();
         formTable.row();
 
-        formTable.add(memoryLabel);
-        formTable.add(memoryBox);
+        formTable.add(memoryLabel).left();
+        formTable.add(memoryBox).left();
         formTable.row();
 
         Table footerTable = new Table(tempSkin);
-        footerTable.add(submitButton);
+        footerTable.add(submitButton).left();
 
         table.add(headerTable);
         table.row();

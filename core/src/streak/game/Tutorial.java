@@ -22,6 +22,15 @@ public class Tutorial implements Screen {
     private Label helloLabel;
     private Label infoLabel;
 
+    private final String tutorialString = "You are about to play a memory game patterned after a famous toy.\n\n" +
+            "The game will play a sequence, starting with a length of 1. You will then click the \n" +
+            "respective buttons to repeat the sequence. Each time you successfully complete the \n" +
+            "sequence, you will score a point, and it will increase in length by 1. You will \n" +
+            "repeat this process until you repeat the sequence incorrectly. Each round you will \n" +
+            "see the full sequence.\n\n" +
+            "The game will have sound, so please be sure the sounds on your machine are enabled. \n\n" +
+            "You get 3 tries.";
+
     public final Skin tempSkin = new Skin(Gdx.files.internal("skins/default/uiskin.json"));
 
     private TextButton submitButton;
@@ -32,13 +41,15 @@ public class Tutorial implements Screen {
         Table table = new Table();
         table.setFillParent(true);
 
-        table.setDebug(true);
+//        table.setDebug(true);
+
+        Label tutorialLabel = new Label(tutorialString, tempSkin);
 
         submitButton = new TextButton("Play the Game", tempSkin);
         submitButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 Random random = new Random();
-                game.setScreen(new GameScreen(game, config));
+                game.setScreen(new GameScreen(game, config, 0, 0));
             }
         });
 
@@ -49,7 +60,9 @@ public class Tutorial implements Screen {
         headerTable.add(helloLabel);
 
         Table formTable = new Table(tempSkin);
-        formTable.setDebug(true);
+        formTable.add(tutorialLabel);
+
+//        formTable.setDebug(true);
 
         table.row();
 
