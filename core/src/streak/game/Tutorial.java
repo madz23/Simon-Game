@@ -3,7 +3,9 @@ package streak.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -12,12 +14,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.Random;
 
 public class Tutorial implements Screen {
     private Game game;
     private Stage stage;
+    private Viewport viewport;
 
     private Label helloLabel;
     private Label infoLabel;
@@ -34,9 +39,14 @@ public class Tutorial implements Screen {
     public final Skin tempSkin = new Skin(Gdx.files.internal("skins/default/uiskin.json"));
 
     private TextButton submitButton;
+    private TextButton backButton;
 
-    public Tutorial(final Game game, final Config config) {
+    private Result result;
+
+    public Tutorial(final Game game, final Config config, final Result result) {
         this.game = game;
+        this.result = result;
+
         stage = new Stage();
         Table table = new Table();
         table.setFillParent(true);
@@ -49,17 +59,26 @@ public class Tutorial implements Screen {
         submitButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 Random random = new Random();
-                game.setScreen(new GameScreen(game, config, 0, 0));
+                game.setScreen(new GameScreen(game, config, 0, 0, result));
+            }
+        });
+
+        backButton = new TextButton("Back", tempSkin);
+        backButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new SelfID(game));
             }
         });
 
         helloLabel = new Label("Tutorial", tempSkin) ;
 
+        stage.addActor(backButton);
 
         Table headerTable = new Table(tempSkin);
         headerTable.add(helloLabel);
 
         Table formTable = new Table(tempSkin);
+        formTable.row();
         formTable.add(tutorialLabel);
 
 //        formTable.setDebug(true);
@@ -96,6 +115,7 @@ public class Tutorial implements Screen {
 
     @Override
     public void resize(int width, int height) {
+
 
     }
 

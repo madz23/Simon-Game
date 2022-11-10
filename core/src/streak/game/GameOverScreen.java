@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class GameOverScreen implements Screen {
@@ -25,9 +26,12 @@ public class GameOverScreen implements Screen {
     private TextButton okButton;
     private TextButton tryAgainButton;
 
-    public GameOverScreen(final Game game, Skin skin, final GameScreen gameScreen) {
+    private Result result;
+
+    public GameOverScreen(final Game game, Skin skin, final GameScreen gameScreen, final Result result) {
         this.skin = skin;
         this.game = game;
+        this.result = result;
 
         Skin tempSkin = new Skin(Gdx.files.internal("skins/default/uiskin.json"));
 
@@ -43,13 +47,22 @@ public class GameOverScreen implements Screen {
 
         okButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
+                result.setBestScore(gameScreen.getBestScore());
+                System.out.println(result.toCSV());
+                // TODO: Insert email logic here
+                try {
+                    System.out.println(new IO().testGet());
+                    new IO().post(result);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Gdx.app.exit();
             }
         });
 
         tryAgainButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game, gameScreen.getConfig(), gameScreen.getTries(), gameScreen.getBestScore()));
+                game.setScreen(new GameScreen(game, gameScreen.getConfig(), gameScreen.getTries(), gameScreen.getBestScore(), result));
             }
         });
 

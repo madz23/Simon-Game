@@ -29,16 +29,19 @@ public class SelfID implements Screen {
     private SelectBox<String> educationBox;
     private Label educationLabel;
 
-    private SelectBox<Integer> gameActivityBox;
+    private SelectBox<String> gameActivityBox;
     private Label gameActivityLabel;
 
-    private SelectBox<Integer> memoryBox;
+    private SelectBox<String> memoryBox;
     private Label memoryLabel;
+    private Label String;
+
+    private Result result;
 
     public final Config[] options = {
-            new Config("skins/classic/classic.json", "sounds/simon-classic/", 4, true),
-            new Config("skins/grayscale/grayscale.json", "sounds/gray/", 4, true),
-            new Config("skins/animals/animals.json", "sounds/animals/", 4, true)
+            new Config("skins/classic/classic.json", "sounds/simon-classic/", 4, true, "Classic"),
+            new Config("skins/grayscale/grayscale.json", "sounds/gray/", 4, true, "Grayscale"),
+            new Config("skins/animals/animals.json", "sounds/animals/", 4, true, "Animals")
     };
 
     public final Skin tempSkin = new Skin(Gdx.files.internal("skins/default/uiskin.json"));
@@ -57,7 +60,10 @@ public class SelfID implements Screen {
         submitButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 Random random = new Random();
-                game.setScreen(new Tutorial(game, options[random.nextInt(options.length)]));
+                Config randomConfig = options[random.nextInt(options.length)];
+
+                result = new Result(ageBox.getSelected(), educationBox.getSelected(), gameActivityBox.getSelected(), memoryBox.getSelected(), randomConfig.getName());
+                game.setScreen(new Tutorial(game, randomConfig, result));
             }
         });
 
@@ -74,16 +80,16 @@ public class SelfID implements Screen {
         educationBox.setItems("Some High School", "High School/GED", "Some College", "Associate's\n" +
                 "Degree", "Bachelor's Degree", "Pursuing Master's Degree", "Master's Degree", "Doctorate and Beyond");
 
-        educationLabel = new Label("What level of education do you fit in?", tempSkin);
+        educationLabel = new Label("What level of education do you have?", tempSkin);
 
-        gameActivityBox = new SelectBox<Integer>(tempSkin);
-        gameActivityBox.setItems(0, 1, 2, 3, 4, 5, 6, 7);
+        gameActivityBox = new SelectBox<String>(tempSkin);
+        gameActivityBox.setItems("0", "1", "2", "3", "4", "5", "6", "7");
 
         gameActivityLabel = new Label("On average, how many days \n" +
                 "do you play video games in a week?", tempSkin);
 
-        memoryBox = new SelectBox<Integer>(tempSkin);
-        memoryBox.setItems(0, 1, 2, 3, 4, 5, 6, 7);
+        memoryBox = new SelectBox<String>(tempSkin);
+        memoryBox.setItems("0", "1", "2", "3", "4", "5", "6", "7");
 
         memoryLabel = new Label("On average, how many days " +
                 "a week\n do you try to improve your memory \nthrough memory games?", tempSkin);
@@ -97,19 +103,21 @@ public class SelfID implements Screen {
 
         table.row();
 
-        formTable.add(ageLabel).left();
+        int height = 70;
+
+        formTable.add(ageLabel).height(height).left();
         formTable.add(ageBox).left();
         formTable.row();
 
-        formTable.add(educationLabel).left();
+        formTable.add(educationLabel).height(height).left();
         formTable.add(educationBox).left();
         formTable.row();
 
-        formTable.add(gameActivityLabel).left();
+        formTable.add(gameActivityLabel).height(height).left();
         formTable.add(gameActivityBox).left();
         formTable.row();
 
-        formTable.add(memoryLabel).left();
+        formTable.add(memoryLabel).height(height).left();
         formTable.add(memoryBox).left();
         formTable.row();
 

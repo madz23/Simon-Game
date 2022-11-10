@@ -51,11 +51,14 @@ public class GameScreen implements Screen {
     private int currentIndex = 0;
     private int bestScore;
 
-    public GameScreen(Game game, Config config, int tries, int bestScore) {
+    private Result result;
+
+    public GameScreen(Game game, Config config, int tries, int bestScore, Result result) {
         this.game = game;
         this.tries = tries;
         this.bestScore = bestScore;
         this.config = config;
+        this.result = result;
 
         this.soundPath = config.getSoundPath();
 
@@ -204,7 +207,7 @@ public class GameScreen implements Screen {
         Sound fail = Gdx.audio.newSound(Gdx.files.internal(soundPath + "failure.wav"));
         fail.play();
 //        System.out.println("GAME OVER");
-        game.setScreen(new GameOverScreen(game, skin, this));
+        game.setScreen(new GameOverScreen(game, skin, this, result));
     }
     /**
      * @param sequence: should contain random sequence of 1, 2, 3, 4
